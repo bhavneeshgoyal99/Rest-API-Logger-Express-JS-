@@ -1,0 +1,25 @@
+{
+  "name": "rest-api-logger",
+  "version": "1.0.0",
+  "description": "This middleware package to log api requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavneeshgoyal99/logger.git"
+  },
+  "keywords": [
+    "ApiLogger",
+    "logger",
+    "rest",
+    "logger"
+  ],
+  "author": "Bhavneesh Goyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhavneeshgoyal99/logger/issues"
+  },
+  "homepage": "https://github.com/bhavneeshgoyal99/logger#readme"
+}
