@@ -32,10 +32,6 @@ This package helps you to record logs of APIs as a middleware.
 - Pagination for Logs
 - Logs predefined APIs
 
-Markdown is a lightweight markup language based on the formatting conventions
-that people naturally use in email.
-As [John Gruber] writes on the [Markdown site][df1]
-
 ## Github Repo
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/bhavneeshgoyal99/Rest-API-Logger-Express-JS-)
 https://github.com/bhavneeshgoyal99/Rest-API-Logger-Express-JS-
