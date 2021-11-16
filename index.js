@@ -1,5 +1,11 @@
 const fs = require("fs");
 
+
+/**
+ * Appends File with Logs
+ * @param {String} data > JSON string
+ * @returns --
+ */
 exports.appendLogsFile = (data) => {
   if (!fs.existsSync("./logs/logs.log")) {
     fs.mkdirSync("./logs", { recursive: true });
@@ -11,12 +17,24 @@ exports.appendLogsFile = (data) => {
     fs.appendFileSync("./logs/logs.log", "\r" + data);
 };
 
+/**
+ * Formats Response Headers
+ * @param {Object} headers 
+ * @returns 
+ */
 exports.responseHeaders = (headers) => {
   const { statusCode, statusMessage, aborted, complete } = headers;
 
   return { statusCode, statusMessage, aborted, complete };
 };
 
+/**
+ * Formats logs
+ * @param {Object} req 
+ * @param {Object} res 
+ * @param {Object} headers 
+ * @returns 
+ */
 exports.logFormatter = (req, res, headers) => {
   const head = this.responseHeaders(headers);
   return {
@@ -26,6 +44,13 @@ exports.logFormatter = (req, res, headers) => {
   };
 };
 
+/**
+ * Formats and process for log file appending
+ * @param {Object} request 
+ * @param {Object} data 
+ * @param {Object} response 
+ * @returns 
+ */
 exports.writeLogger = (request, data, response) => {
   const log = this.logFormatter(request, data, response);
 
@@ -33,6 +58,12 @@ exports.writeLogger = (request, data, response) => {
   return;
 };
 
+/**
+ * Middleware function to process log process
+ * @param {Object} req 
+ * @param {Object} response 
+ * @param {Function} next 
+ */
 exports.logger = (req, response, next) => {
   const { url, headers, params, query, method } = req;
 
@@ -55,6 +86,10 @@ exports.logger = (req, response, next) => {
   next();
 };
 
+/**
+ * Read logs
+ * @returns {Object} Logs
+ */
 exports.readLogs = () => {
   try {
     const logs = fs.readFileSync("logs/logs.log", {
