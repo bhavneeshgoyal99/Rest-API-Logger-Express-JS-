@@ -1,6 +1,5 @@
 const fs = require("fs");
 
-
 /**
  * Appends File with Logs
  * @param {String} data > JSON string
@@ -19,8 +18,8 @@ exports.appendLogsFile = (data) => {
 
 /**
  * Formats Response Headers
- * @param {Object} headers 
- * @returns 
+ * @param {Object} headers
+ * @returns
  */
 exports.responseHeaders = (headers) => {
   const { statusCode, statusMessage, aborted, complete } = headers;
@@ -30,10 +29,10 @@ exports.responseHeaders = (headers) => {
 
 /**
  * Formats logs
- * @param {Object} req 
- * @param {Object} res 
- * @param {Object} headers 
- * @returns 
+ * @param {Object} req
+ * @param {Object} res
+ * @param {Object} headers
+ * @returns
  */
 exports.logFormatter = (req, res, headers) => {
   const head = this.responseHeaders(headers);
@@ -46,10 +45,10 @@ exports.logFormatter = (req, res, headers) => {
 
 /**
  * Formats and process for log file appending
- * @param {Object} request 
- * @param {Object} data 
- * @param {Object} response 
- * @returns 
+ * @param {Object} request
+ * @param {Object} data
+ * @param {Object} response
+ * @returns
  */
 exports.writeLogger = (request, data, response) => {
   const log = this.logFormatter(request, data, response);
@@ -60,9 +59,9 @@ exports.writeLogger = (request, data, response) => {
 
 /**
  * Middleware function to process log process
- * @param {Object} req 
- * @param {Object} response 
- * @param {Function} next 
+ * @param {Object} req
+ * @param {Object} response
+ * @param {Function} next
  */
 exports.logger = (req, response, next) => {
   const { url, headers, params, query, method } = req;
@@ -105,5 +104,19 @@ exports.readLogs = () => {
       status: 0,
       message: "No Logs Exists",
     };
+  }
+};
+
+/**
+ * Function to Clear Logs
+ *
+ * @returns {String}
+ */
+exports.clearLogs = () => {
+  try {
+    fs.unlinkSync("logs/logs.log");
+    console.log("Logs Cleared Successfully");
+  } catch (e) {
+    console.error(e);
   }
 };

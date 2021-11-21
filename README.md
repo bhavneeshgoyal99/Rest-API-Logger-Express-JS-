@@ -27,6 +27,10 @@ This package helps you to record logs of APIs as a middleware.
 - Records every API log
 - Predefined Logging function
 - Predefined function to Get Logs
+- Clear Logs with
+```sh
+node -e require('rest-api-logger').clearLogs()
+```
 
 ## Upcoming
 - Pagination for Logs
@@ -55,9 +59,17 @@ app.get("/", function (req, res) {
 });
 
 app.get("/logs", function (req, res) {
+    // Reading logs Here
     const logs = logger.readLogs();
 
     res.json(logs);
+    res.end();
+});
+
+app.get("/clear-logs", function (req, res) {
+    // Clear Logs Here
+    const logs = logger.clearLogs();
+
     res.end();
 });
 
